@@ -3,26 +3,13 @@
 #include <fstream>
 #include <string>
 
-char** mat_fill(std::string file_directory){
-  std::ifstream in_file;
-  in_file.open(file_directory);
-  int cols = number_of_columns(file_directory);
-  int rows = number_of_rows(file_directory);
-  std::cout << cols << std::endl << rows << std::endl;
-  char **mat = new char*[rows];
+void print_mat(char **mat, int rows, int cols){
   for (size_t i = 0; i < rows; i++) {
-    mat[i] = new char[cols];
-  }
-  std::string str;
-
-  for (size_t i = 0; i < rows; i++) {
-    getline(in_file, str);
-    int k = 0;
     for (size_t j = 0; j < cols; j++) {
-      mat[i][j] = str[j*2];
+      std::cout << mat[i][j];
     }
+    std::cout << std::endl;
   }
-  return mat;
 }
 
 int number_of_columns(std::string file_directory){
@@ -52,11 +39,24 @@ int number_of_rows(std::string file_directory){
   return rows;
 }
 
-void print_mat(char **mat, int rows, int cols){
+char** mat_fill(std::string file_directory){
+  std::ifstream in_file;
+  in_file.open(file_directory);
+  int cols = number_of_columns(file_directory);
+  int rows = number_of_rows(file_directory);
+  std::cout << rows << std::endl << cols << std::endl;
+  char **mat = new char*[rows];
   for (size_t i = 0; i < rows; i++) {
-    for (size_t j = 0; j < cols; j++) {
-      std::cout << mat[i][j];
-    }
-    std::cout << std::endl;
+    mat[i] = new char[cols];
   }
+  std::string str;
+
+  for (size_t i = 0; i < rows; i++) {
+    getline(in_file, str);
+    for (size_t j = 0; j < cols; j++) {
+      mat[i][j] = str[j*2];
+    }
+  }
+  print_mat(mat, rows, cols);
+  return mat;
 }
