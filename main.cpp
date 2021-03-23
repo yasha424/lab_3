@@ -1,7 +1,7 @@
 #include "mat.h"
-#include "que.h"
+#include "queue.h"
 using namespace std;
 
 int main(){
-  
+
 }
