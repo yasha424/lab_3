@@ -1,7 +1,7 @@
 #include "mat.h"
+#include "que.h"
+using namespace std;
 
 int main(){
-  std::string str;
-  std::cin >> str;
-  char **mat = mat_fill(str);
+  
 }
