@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
+#include "Cell.h"
 
-template <typename T>
+template <class T>
 class Queue{
 private:
   T* arr;
@@ -18,7 +20,7 @@ public:
   int size();
 };
 
-template <typename T>
+template <class T>
 Queue<T>::Queue(){
   capacity = 10;
   arr = new T[capacity];
@@ -27,7 +29,7 @@ Queue<T>::Queue(){
   // popped = 0;
 }
 
-template <typename T>
+template <class T>
 void Queue<T>::push(T item){
   if (capacity == current) {
     T *arr2 = new T[capacity*2];
@@ -50,7 +52,7 @@ void Queue<T>::push(T item){
 
 }
 
-// template <typename T>
+// template <class T>
 // T Queue<T>::front(){
 //   if (current - popped == 0) {
 //     std::cout << "there is no FRONT!" << std::endl;
@@ -61,18 +63,17 @@ void Queue<T>::push(T item){
 //   }
 // }
 
-template <typename T>
+template <class T>
 T Queue<T>::front(){
   if (current == 0) {
     std::cout << "there is no FRONT!" << std::endl;
-    return -1;
   }
   else{
     return arr[current-1];
   }
 }
 
-// template <typename T>
+// template <class T>
 // T Queue<T>::back(){
 //   if (current - popped== 0) {
 //     std::cout << "there is no BACK!" << std::endl;
@@ -83,18 +84,17 @@ T Queue<T>::front(){
 //   }
 // }
 
-template <typename T>
+template <class T>
 T Queue<T>::back(){
   if (current == 0) {
     std::cout << "there is no BACK!" << std::endl;
-    return -1;
   }
   else{
     return arr[0];
   }
 }
 
-// template <typename T>
+// template <class T>
 // T Queue<T>::pop(){
 //   if (current == 0) {
 //     std::cout << "there is nothing to POP!!!" << std::endl;
@@ -105,29 +105,29 @@ T Queue<T>::back(){
 //   }
 // }
 
-template <typename T>
+template <class T>
 T Queue<T>::pop(){
   if (current == 0) {
     std::cout << "there is no elements!" << std::endl;
-    return -1;
   }
   else if (current == 1) {
-    std::cout << "last element was deleted" << std::endl;
+    // std::cout << "last element was deleted" << std::endl;
     current--;
-    return -1;
+    T tmp = arr[0];
+    return tmp;
   }
   else{
     T tmp = arr[0];
-    for (size_t i = 1; i < current-1; i++) {
-      arr[i-1] = arr[i];
-      priorities[i-1] = priorities[i];
+    for (size_t i = 0; i < current-1; i++) {
+      arr[i] = arr[i+1];
+      priorities[i] = priorities[i+1];
     }
     current--;
     return tmp;
   }
 }
 
-template <typename T>
+template <class T>
 bool Queue<T>::empty(){
   if (current != 0){
     return false;
@@ -137,12 +137,12 @@ bool Queue<T>::empty(){
   }
 }
 
-template <typename T>
+template <class T>
 int Queue<T>::size(){
   return current;
 }
 //
-// template <typename T>
+// template <class T>
 // bool Queue<T>::empty(){
 //   if (current-popped != 0) {
 //     return false;
@@ -150,7 +150,7 @@ int Queue<T>::size(){
 //   else return true;
 // }
 //
-// template <typename T>
+// template <class T>
 // int Queue<T>::size(){
 //   return current - popped;
 // }
