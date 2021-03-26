@@ -44,7 +44,6 @@ char** mat_fill(std::string file_directory){
   in_file.open(file_directory);
   int cols = number_of_columns(file_directory);
   int rows = number_of_rows(file_directory);
-  // std::cout << rows << std::endl << cols << std::endl;
   char **mat = new char*[rows];
   for (size_t i = 0; i < rows; i++) {
     mat[i] = new char[cols];
@@ -57,6 +56,5 @@ char** mat_fill(std::string file_directory){
       mat[i][j] = str[j*2];
     }
   }
-  // print_mat(mat, rows, cols);
   return mat;
 }

@@ -52,17 +52,6 @@ void Queue<T>::push(T item){
 
 }
 
-// template <class T>
-// T Queue<T>::front(){
-//   if (current - popped == 0) {
-//     std::cout << "there is no FRONT!" << std::endl;
-//     return -1;
-//   }
-//   else{
-//     return arr[current-1];
-//   }
-// }
-
 template <class T>
 T Queue<T>::front(){
   if (current == 0) {
@@ -72,17 +61,6 @@ T Queue<T>::front(){
     return arr[current-1];
   }
 }
-
-// template <class T>
-// T Queue<T>::back(){
-//   if (current - popped== 0) {
-//     std::cout << "there is no BACK!" << std::endl;
-//     return -1;
-//   }
-//   else{
-//     return arr[popped];
-//   }
-// }
 
 template <class T>
 T Queue<T>::back(){
@@ -94,24 +72,12 @@ T Queue<T>::back(){
   }
 }
 
-// template <class T>
-// T Queue<T>::pop(){
-//   if (current == 0) {
-//     std::cout << "there is nothing to POP!!!" << std::endl;
-//   }
-//   else{
-//     popped++;
-//     return arr[popped-1];
-//   }
-// }
-
 template <class T>
 T Queue<T>::pop(){
   if (current == 0) {
     std::cout << "there is no elements!" << std::endl;
   }
   else if (current == 1) {
-    // std::cout << "last element was deleted" << std::endl;
     current--;
     T tmp = arr[0];
     return tmp;
@@ -141,16 +107,3 @@ template <class T>
 int Queue<T>::size(){
   return current;
 }
-//
-// template <class T>
-// bool Queue<T>::empty(){
-//   if (current-popped != 0) {
-//     return false;
-//   }
-//   else return true;
-// }
-//
-// template <class T>
-// int Queue<T>::size(){
-//   return current - popped;
-// }
