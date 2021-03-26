@@ -43,9 +43,6 @@ void Queue<T>::push(T item){
     delete[] priorities;
     arr = arr2;
     priorities = priorities2;
-    delete[] arr2;
-    delete[] priorities2;
-    std::cout << "was doubled" << std::endl;
   }
   arr[current] = item;
   current++;
