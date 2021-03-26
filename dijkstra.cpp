@@ -15,8 +15,8 @@ char** find_way(string str, Cell start, Cell end, int rows, int cols, size_t &di
   bool** visited = new bool*[rows];
   for (size_t i = 0; i < rows; i++) {
     visited[i] = new bool[cols];
-    for (size_t i = 0; i < cols; i++) {
-      visited[i][j] =  0;
+    for (size_t j = 0; j < cols; j++) {
+      visited[i][j] = 0;
     }
   }
   Cell current = start;
