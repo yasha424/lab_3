@@ -58,3 +58,15 @@ char** mat_fill(std::string file_directory){
   }
   return mat;
 }
+
+void create_file(std::string str, char** mat){
+  std::ofstream outFile;
+  outFile.open(str + "res.txt");
+  for (size_t i = 0; i < number_of_rows(str); i++) {
+    for (size_t j = 0; j < number_of_columns(str); j++) {
+      outFile << mat[i][j] << ' ';
+    }
+    outFile << std::endl;
+  }
+  outFile.close();
+}
