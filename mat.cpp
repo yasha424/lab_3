@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <fstream>
 
 void print_mat(char **mat, int rows, int cols){
   for (size_t i = 0; i < rows; i++) {

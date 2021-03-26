@@ -55,19 +55,19 @@ char** find_way(string str, Cell start, Cell end, int rows, int cols, size_t &di
     way = way.substr(index+1);
     if (where == "up") {
       i--;
-      mat[i][j] = 'O';
+      mat[i][j] = ch;
     }
     else if (where == "right") {
       j++;
-      mat[i][j] = 'O';
+      mat[i][j] = ch;
     }
     else if (where == "down") {
       i++;
-      mat[i][j] = 'O';
+      mat[i][j] = ch;
     }
     else if (where == "left") {
       j--;
-      mat[i][j] = 'O';
+      mat[i][j] = ch;
     }
     if (k == 58) {
       k = 97;
