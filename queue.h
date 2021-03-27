@@ -35,14 +35,8 @@ Queue<T>::Queue(){
 
 template <class T>
 void Queue<T>::push(T item, int priority){
-  int pos = 0;
+    int pos = 0;
 
-  if (current == 0) {
-    arr[pos] = item;
-    priorities[pos] = priority;
-    current++;
-  }
-  else{
     if (current >= capacity-1) {
       T *arr2 = new T[capacity*2];
       int *priorities2 = new int[capacity*2];
@@ -58,7 +52,6 @@ void Queue<T>::push(T item, int priority){
     }
     while (priority > priorities[pos] && pos < current) {
       pos++;
-      cout << "the position is " << pos << endl;
     }
     for (int i = current; i > pos; i--) {
       arr[i] = arr[i-1];
@@ -67,7 +60,6 @@ void Queue<T>::push(T item, int priority){
     arr[pos] = item;
     priorities[pos] = priority;
     current++;
-  }
 }
 
 
