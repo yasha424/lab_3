@@ -41,25 +41,25 @@ char** AStar(string str, Cell start, Cell end, int rows, int cols, size_t &dista
     if (visited[current.i-1][current.j] == 0 && mat[current.i-1][current.j] != 'X') {
       dist = heuristic(current, end, "up");
       Cell tmp(current.i-1, current.j, current.distance+1, current.way + "up ");
-      cells.push(tmp, dist);
+      cells.push(tmp, dist + current.distance);
     }
 
     if (visited[current.i][current.j+1] == 0 && mat[current.i][current.j+1] != 'X') {
       dist = heuristic(current, end, "right");
       Cell tmp(current.i, current.j+1, current.distance+1, current.way + "right ");
-      cells.push(tmp, dist);
+      cells.push(tmp, dist + current.distance);
     }
 
     if (visited[current.i+1][current.j] == 0 && mat[current.i+1][current.j] != 'X') {
       dist = heuristic(current, end, "down");
       Cell tmp(current.i+1, current.j, current.distance+1, current.way + "down ");
-      cells.push(tmp, dist);
+      cells.push(tmp, dist + current.distance);
     }
 
     if (visited[current.i][current.j-1] == 0 && mat[current.i][current.j-1] != 'X') {
       dist = heuristic(current, end, "left");
       Cell tmp(current.i, current.j-1, current.distance+1, current.way + "left ");
-      cells.push(tmp, dist);
+      cells.push(tmp, dist + current.distance);
     }
 
     visited[current.i][current.j] = 1;
