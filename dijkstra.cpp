@@ -64,7 +64,6 @@ char** AStar(string str, Cell start, Cell end, int rows, int cols, size_t &dista
 
     visited[current.i][current.j] = 1;
     current = cells.pop();
-    cout << endl << current.i << ", " << current.j << ' ' << cells.pr() << " was picked" << endl << endl;
   }
   distance = current.distance;
   int i = start.i;
