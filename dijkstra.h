@@ -7,5 +7,5 @@
 #include <string>
 #include <vector>
 
-
-char** find_way(string str, Cell start, Cell end);
+int heuristic(Cell current, Cell end, string str);
+char** AStar(string str, Cell start, Cell end, int rows, int cols, size_t &distance);

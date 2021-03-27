@@ -1,5 +1,7 @@
 #include "dijkstra.h"
 #include <ctime>
+#include <iostream>
+
 using namespace std;
 
 int main(){
@@ -12,7 +14,7 @@ int main(){
   size_t x = -1;
   Cell end(1, 6, x);
   int begin = time(0);
-  char** mat = find_way(str, start, end, rows, cols, distance);
+  char** mat = AStar(str, start, end, rows, cols, distance);
   print_mat(mat, rows, cols);
   cout << "shortest distance is: " << distance << endl;
   int begend = time(0);
