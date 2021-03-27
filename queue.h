@@ -12,7 +12,7 @@ private:
 
 public:
   Queue();
-  void push(T item);
+  void push(T item, int priority);
   T pop();
   T front();
   T back();
@@ -29,8 +29,9 @@ Queue<T>::Queue(){
   // popped = 0;
 }
 
+
 template <class T>
-void Queue<T>::push(T item){
+void Queue<T>::push(T item, int priority){
   if (capacity == current) {
     T *arr2 = new T[capacity*2];
     int *priorities2 = new int[capacity*2];
@@ -44,10 +45,19 @@ void Queue<T>::push(T item){
     arr = arr2;
     priorities = priorities2;
   }
-  arr[current] = item;
+  int pos = 0;
+  while (priorities[pos] < priority) {
+    pos++;
+  }
+  for (size_t i = current-1; i >= pos; i--) {
+    arr[i+1] = arr[i];
+    priorities[i+1] = priorities[i];
+  }
+  arr[pos] = item;
+  priorities[pos] = priority;
   current++;
-
 }
+
 
 template <class T>
 T Queue<T>::front(){
