@@ -60,7 +60,7 @@ void Queue<T>::push(T item, int priority){
       pos++;
       cout << "the position is " << pos << endl;
     }
-    for (int i = current-1; i > pos; i--) {
+    for (int i = current; i > pos; i--) {
       arr[i] = arr[i-1];
       priorities[i] = priorities[i-1];
     }
@@ -127,7 +127,7 @@ int Queue<T>::size(){
   return current;
 }
 
-// template <class T>
-// int Queue<T>::pr(){
-//   return priorities[current];
-// }
+template <class T>
+int Queue<T>::pr(){
+  return priorities[current];
+}
