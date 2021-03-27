@@ -1,6 +1,8 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 #include "Cell.h"
+using namespace std;
 
 template <class T>
 class Queue{
@@ -18,13 +20,14 @@ public:
   T back();
   bool empty();
   int size();
+  int pr();
 };
 
 template <class T>
 Queue<T>::Queue(){
   capacity = 10;
-  arr = new T[capacity];
-  priorities = new int[capacity];
+  arr = new T[10];
+  priorities = new int[10];
   current = 0;
   // popped = 0;
 }
@@ -32,30 +35,39 @@ Queue<T>::Queue(){
 
 template <class T>
 void Queue<T>::push(T item, int priority){
-  if (capacity == current) {
-    T *arr2 = new T[capacity*2];
-    int *priorities2 = new int[capacity*2];
-    capacity *= 2;
-    for (size_t i = 0; i < capacity/2; i++) {
-      arr2[i] = arr[i];
-      priorities2[i] = priorities[i];
-    }
-    delete[] arr;
-    delete[] priorities;
-    arr = arr2;
-    priorities = priorities2;
-  }
   int pos = 0;
-  while (priorities[pos] < priority) {
-    pos++;
+
+  if (current == 0) {
+    arr[pos] = item;
+    priorities[pos] = priority;
+    current++;
   }
-  for (size_t i = current-1; i >= pos; i--) {
-    arr[i+1] = arr[i];
-    priorities[i+1] = priorities[i];
+  else{
+    if (current >= capacity-1) {
+      T *arr2 = new T[capacity*2];
+      int *priorities2 = new int[capacity*2];
+      capacity *= 2;
+      for (size_t i = 0; i < capacity/2; i++) {
+        arr2[i] = arr[i];
+        priorities2[i] = priorities[i];
+      }
+      delete[] arr;
+      delete[] priorities;
+      arr = arr2;
+      priorities = priorities2;
+    }
+    while (priority > priorities[pos] && pos < current) {
+      pos++;
+      cout << "the position is " << pos << endl;
+    }
+    for (int i = current-1; i > pos; i--) {
+      arr[i] = arr[i-1];
+      priorities[i] = priorities[i-1];
+    }
+    arr[pos] = item;
+    priorities[pos] = priority;
+    current++;
   }
-  arr[pos] = item;
-  priorities[pos] = priority;
-  current++;
 }
 
 
@@ -114,3 +126,8 @@ template <class T>
 int Queue<T>::size(){
   return current;
 }
+
+// template <class T>
+// int Queue<T>::pr(){
+//   return priorities[current];
+// }
